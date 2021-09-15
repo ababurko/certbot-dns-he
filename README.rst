@@ -14,7 +14,7 @@ Install `cerbot-dns-he <https://pypi.org/project/certbot-dns-he/>`_ to your Cert
 
   $ sudo /opt/eff.org/certbot/venv/bin/pip install cerbot-dns-he
 
-You can also use ``git+https://github.com/TSaaristo/certbot-dns-he.git`` or clone the repository and install from the directory, but pip is recommended.
+You can also use ``git+https://github.com/ababurko/certbot-dns-he.git`` or clone the repository and install from the directory, but pip is recommended.
 
 Example usage
 -------------
