@@ -14,6 +14,8 @@ from certbot import errors
 from certbot import interfaces
 from certbot.plugins import dns_common
 
+from tld import get_fld
+
 logger = logging.getLogger(__name__)
 
 
@@ -60,6 +62,7 @@ class Authenticator(dns_common.DNSAuthenticator):
 
         # Fetch all domains and find the target by name
         all_domains = self.dns_api.get_domains()
+        domain = get_fld(domain, fix_protocol=True)
         target_domain = next((x for x in all_domains if x.name.lower() == domain.lower()), None)
 
         if not target_domain:
@@ -89,6 +92,7 @@ class Authenticator(dns_common.DNSAuthenticator):
 
         # Fetch all domains and find the target by name
         all_domains = self.dns_api.get_domains()
+        domain = get_fld(domain, fix_protocol=True)
         target_domain = next((x for x in all_domains if x.name.lower() == domain.lower()), None)
 
         if not target_domain:
