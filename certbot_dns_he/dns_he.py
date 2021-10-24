@@ -62,8 +62,7 @@ class Authenticator(dns_common.DNSAuthenticator):
 
         # Fetch all domains and find the target by name
         all_domains = self.dns_api.get_domains()
-        domain = get_fld(domain, fix_protocol=True)
-        target_domain = next((x for x in all_domains if x.name.lower() == domain.lower()), None)
+        target_domain = next(x for x in all_domains if domain.endswith(x.name.lower()))
 
         if not target_domain:
             raise errors.PluginError('Unable to find domain: {0}'.format(domain))
@@ -92,8 +91,7 @@ class Authenticator(dns_common.DNSAuthenticator):
 
         # Fetch all domains and find the target by name
         all_domains = self.dns_api.get_domains()
-        domain = get_fld(domain, fix_protocol=True)
-        target_domain = next((x for x in all_domains if x.name.lower() == domain.lower()), None)
+        target_domain = next(x for x in all_domains if domain.endswith(x.name.lower()))
 
         if not target_domain:
             raise errors.PluginError('Unable to find domain: {0}'.format(domain))
